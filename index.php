@@ -1,51 +1,26 @@
-﻿<?php
-/**
- * 入口文件
- */
-if (ini_get('magic_quotes_gpc')) {
+<?php
+// +----------------------------------------------------------------------
+// | ThinkPHP [ WE CAN DO IT JUST THINK ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2006-2014 http://thinkphp.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Licensed ( http://www.apache.org/licenses/LICENSE-2.0 )
+// +----------------------------------------------------------------------
+// | Author: liu21st <liu21st@gmail.com>
+// +----------------------------------------------------------------------
 
-    function stripslashesRecursive(array $array)
-    {
-        foreach ($array as $k => $v) {
-            if (is_string($v)) {
-                $array[$k] = stripslashes($v);
-            } else
-                if (is_array($v)) {
-                    $array[$k] = stripslashesRecursive($v);
-                }
-        }
-        return $array;
-    }
-    $_GET = stripslashesRecursive($_GET);
-    $_POST = stripslashesRecursive($_POST);
-}
-// 接口加密公钥(app端访问接口时传输)
-define('PUBLIC_KEY', 'evn8cyb2tfn74lyp');
-// 接口加密私钥(服务端返回参数)
-define('PRIVATE_KEY', 'o5xzpmi1d612o7fd');
-// url地址
-define("IPSS", 'https://cs6.51bpc.cn');
-// 开启调试模式
-define("APP_DEBUG", true);
-// 网站当前路径
-define('SITE_PATH', dirname(__FILE__) . "/");
-// 项目路径，不可更改
-define('APP_PATH', SITE_PATH . 'application/');
-// 项目相对路径，不可更改
-define('SPAPP_PATH', SITE_PATH . 'thinkphp/');
+// 应用入口文件
 
-define('SPAPP', './application/');
-// 项目资源目录，不可更改
-define('SPSTATIC', SITE_PATH . 'statics/');
-// 定义缓存存放路径
-define("RUNTIME_PATH", SITE_PATH . "data/runtime/");
-// 静态缓存目录
-define("HTML_PATH", SITE_PATH . "data/runtime/Html/");
-// 版本号
-define("THINKCMF_VERSION", 'X2.2.3');
+// 检测PHP环境
+if(version_compare(PHP_VERSION,'5.3.0','<'))  die('require PHP > 5.3.0 !');
 
-define("THINKCMF_CORE_TAGLIBS", 'cx,Common\Lib\Taglib\TagLibSpadmin,Common\Lib\Taglib\TagLibHome');
+// 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
+define('APP_DEBUG',true);
 
-// 载入框架核心文件
-require SPAPP_PATH . 'Core/ThinkPHP.php';
+// 定义应用目录
+define('APP_PATH','./Application/');
 
+// 引入ThinkPHP入口文件
+require './ThinkPHP/ThinkPHP.php';
+
+// 亲^_^ 后面不需要任何代码了 就是如此简单

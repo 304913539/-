@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/login/css/bootstrap.min.css" />
+      <link href="__PUBLIC__/lib/layer/2.4/layer.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/login/css/login.css" />
+    <!--[if IE 7 ]>
+    <link href="__PUBLIC__/login/css/ie7.css" rel="stylesheet">
+<![endif]-->
+    <!--[if IE 8 ]>
+    <link href="__PUBLIC__/login/css/ie8.css" rel="stylesheet">
+<![endif]-->
+    <script type="text/javascript" src="__PUBLIC__/login/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/login/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/login/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/login/js/modernizr.custom.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/login/js/utils.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        var $html = $('html');
+        if ($html.width() <= 1366) {
+            $html.addClass('namespace-1366');
+        } else {
+            $html.addClass('namespace-1920');
+        }
+        var explorer =navigator.userAgent ;
+        //ie
+        if (explorer.indexOf("MSIE") >= 0) {
+            $('.warn-tips').show();
+        }
+
+    });
+    </script>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+</head>
+
+<body>
+    <!-- 新的登陆页面 -->
+    <div class="new-login-wrap">
+        <div class="login-head">
+            <div class="login-head-wrap clearfix">
+                <div class="head-logo">
+                    <img class="head-logo-img" src="" alt="logo" width="70" height="37" />
+                    <span class="head-logo-title">
+                        <!-- <span>顾客大数据</span> -->
+                    <!--   <span class="dot-circle">·</span> -->
+                    <span>****保险销售后台</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="login-body">
+            <div class="login-content-wrap clearfix">
+                <div class="login-content-box">
+                    <div class="login-content">
+                        <form id="login_form" action="login" method="post" >
+                            <div class="content-title-wrap">
+                                <span class="content-title">登录</span>
+                            </div>
+                            <div class="form-div">
+                                <div class="form-input-div">
+                                    <span class="input-div-addon">
+                                        <img src="__PUBLIC__/static/h-ui.admin/images/yonghuming.png" width="22" height="22">
+                                    </span>
+                                    <input id="username" name="username" class="input-control" type="text" placeholder="请输入用户名">
+                                </div>
+                            </div>
+
+                            <div class="form-div">
+                                <div class="form-input-div">
+                                    <span class="input-div-addon">
+                                        <img src="__PUBLIC__/static/h-ui.admin/images/mima.png" width="22" height="22">
+                                    </span>
+                                    <input id="password" name="password" class="input-control" type="password" placeholder="请输入密码">
+                                </div>
+                            </div>
+
+                            <div class="form-div" id="kaptchadiv">
+                                <div class="form-input-div">
+                                    <span class="input-div-addon">
+                                        <img src="__PUBLIC__/static/h-ui.admin/images/kaptchaimage.png" width="22" height="22">
+                                    </span>
+                                    <input name="code" type="text" id="kaptchaCode" maxlength="4" class="code-input-control" placeholder="验证码">
+                                    <img src="<{:U('Login/verify')}>" id="kaptchaImage" class="kaptchaImage" style="width: 124px;height: 45px;" >
+                                    <a href="#" class="change-code" >换一张</a>
+                                </div>
+                            </div>
+                            <p class="error-info">
+                            </p>
+                            <div class="form-div">
+                                <div class="form-input-div">
+                                    <input class="input-control input-submit" type="submit" id="loginBtn" value="登录">
+                                </div>
+                            </div>
+                            <!-- <div class="onload-link-wrap clearfix">
+                                <a class="onload-link pull-right" href="javascript:void(0)">忘记密码？</a>
+                            </div> -->
+                        </form>
+                    </div>
+                    <p class="warn-tips" style="display:none;" >建议使用谷歌浏览器(chrome)或者火狐浏览器(firefox)访问后台，若使用其他浏览器访问可能存在兼容性问题，影响您的使用体验。</p>
+                </div>
+            </div>
+        </div>
+        <div class="login-bottom">
+            <p class="wrap1200 bottom-copyright">©20**-2017 **信息科技有限公司版权所有 ICP证：京******号</p>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="__PUBLIC__/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript">
+
+$(function(){
+
+
+    $('.change-code').click(function(event) {
+
+        var src = "<{:U('Login/verify')}>";
+        var random = Math.floor(Math.random() * (1000 + 1));
+        $('#kaptchaImage').hide().attr('src', src + "&random=" + random).fadeIn();
+        $('#kaptchaCode').val('');
+        $('#kaptchaCode').focus();
+
+     });    //change_code 闭合标签
+
+        $("#login_form").validate({
+        rules:{
+            username:{
+                required:true,
+            },
+            password:{
+                required:true,
+            },
+            code:{
+                required:true,
+            },
+
+
+        },
+        onkeyup:false,
+        focusCleanup:true,
+        success:"valid",
+        submitHandler:function(form){
+
+            $.ajax({
+                url: "<{:U('Admin/Login/login')}>",
+                type: 'POST',
+                dataType: 'json',
+                 data:{
+                    username: $('#username').val(),
+                    password: $('#password').val(),
+                    code: $("input[name='code']").val(),
+                 },
+                success:function(json){
+
+                if (json.code == 0){//错误
+
+                    if (json.data.type == 'code') {
+
+                         layer.msg(json.data.info);
+
+
+                    } else if (json.data.type == 'userinfo') { //账户或密码错误
+
+                        layer.msg(json.data.info);
+
+
+                    } else if (json.data.type == 'error') {
+                        layer.msg(json.data.info);
+                    } else if(json.data.type == 'login_error'){
+                         layer.msg(json.data.info);
+                    }
+
+
+                } else if (json.code == 1) { //验证通过
+
+                    if (json.data.type == 'success') {
+
+                        location.href = "<{:U('Admin/index/index')}>";
+                    }
+                }
+                }
+            })
+
+
+        }
+
+    });
+
+
+
+    })  //jquery闭合标签
+</script>
+</html>
